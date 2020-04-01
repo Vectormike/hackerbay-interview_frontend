@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/welcomeHeader";
-import Board from "./components/board.js";
-import Score from "./components/scoreBoard";
+//import Board from "./components/board.js";
+//import Score from "./components/scoreBoard";
+import Cell from "./components/cell";
 import { shuffleArray } from "./components/shuffleArray";
 import { checkFinish } from "./components/checkFinish";
 import { scoreCard } from "./components/scoreCard";
 import { movement } from "./components/movement";
+import createReactClass from "create-react-class";
 
 import "./App.css";
 
@@ -14,7 +16,30 @@ let items = [];
 let max_mushroom;
 let no_of_moves;
 
-let Box = createReactClass({
+let Score = createReactClass({
+  getInitialState: function() {
+    return {
+      score: 0
+    };
+  },
+  render: function() {
+    return (
+      <div id="score">
+        <div>
+          <p> Score Achieved </p> <p id="score_achieved"> 0 </p>{" "}
+        </div>{" "}
+        <div>
+          <p> Steps Used </p> <p id="no_of_moves"> 0 </p>{" "}
+        </div>{" "}
+        <div>
+          <p> Remaining mushrooms </p> <p id="mashrooms_remaining"> 0 </p>{" "}
+        </div>{" "}
+      </div>
+    );
+  }
+});
+
+let Board = createReactClass({
   getInitialState: function() {
     // build an array to hold all the cells
     //
@@ -102,7 +127,7 @@ function App() {
   };
 
   useEffect(() => {
-    window.addEventListener("load", handleLoad(state.width, state.height));
+    window.addEventListener("load", handleLoad(width, height));
 
     return () => {
       document.addEventListener("keydown", onKeyPress);

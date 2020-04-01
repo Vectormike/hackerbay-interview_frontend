@@ -15,7 +15,7 @@ const Board = ({ items }) => {
       cells: c
     };
   };
-  return <div>{this.cells}</div>;
+  return <div>{cells}</div>;
 };
 
 export default Board;
