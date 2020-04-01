@@ -29,7 +29,7 @@ let Score = createReactClass({
           <p> Score Achieved </p> <p id="score_achieved"> 0 </p>{" "}
         </div>{" "}
         <div>
-          <p> Steps Used </p> <p id="no_of_moves"> 0 </p>{" "}
+          <p> Steps </p> <p id="no_of_moves"> 0 </p>{" "}
         </div>{" "}
         <div>
           <p> Remaining mushrooms </p> <p id="mashrooms_remaining"> 0 </p>{" "}
@@ -86,10 +86,7 @@ function App() {
     matrix.style.width = 40 * width + "px";
     console.log(items);
     let shuffled_data = shuffleArray(items);
-    let truncated_data = shuffled_data.slice(
-      0,
-      Math.max(this.state.width, this.state.height)
-    );
+    let truncated_data = shuffled_data.slice(0, Math.max(width, height));
     for (let i = 0; i < truncated_data.length; i++) {
       let elem_position = document.getElementById(truncated_data[i]);
       elem_position.innerHTML =
